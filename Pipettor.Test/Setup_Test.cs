@@ -8,10 +8,9 @@ namespace Pipettor.Test
 {
     public class Setup_Test
     {
-        public static PipetteDevice SetupDevice(int vol, int cap)
+        public static PipetteDevice SetupDevice(int cap)
         {
             PipetteDevice device = new PipetteDevice();
-            device.Volume = vol;
             device.Capacity = cap;
             return device;
         }

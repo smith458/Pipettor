@@ -28,8 +28,8 @@ namespace Pipettor.Test
         [Test]
         public void Dividing_lots_of_numbers()
         {
-            PipetteDevice biomek = Setup_Test.SetupDevice(_vol, _cap);
-            int[] result = biomek.CalculateVolumes();
+            PipetteDevice biomek = Setup_Test.SetupDevice(_cap);
+            int[] result = biomek.CalculateMoveset(_vol);
             Assert.IsTrue((result.Max() - result.Min()) <= 1);
         }
     }  

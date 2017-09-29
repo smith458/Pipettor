@@ -10,40 +10,15 @@ namespace Pipettor
     {
         public PipetteDevice()
         {
-
+            capacity = 100;
         }
 
-        public void RequestVolume()
+        public int[] CalculateMoveset(int volume)
         {
-            while (true)
+            if (volume <= 0)
             {
-                Console.WriteLine("What is the volume to transfer?");
-                result = int.TryParse(Console.ReadLine(), out volume);
-
-                if (result && volume > 0)
-                {
-                    break;
-                }
+                return new int[] { 0 };
             }
-        }
-
-        public void RequestCapacity()
-        {
-            while (true)
-            {
-                Console.WriteLine("What is the capacity of the pipettor?");
-                result = int.TryParse(Console.ReadLine(), out capacity);
-
-                if (result && capacity > 0)
-                {
-                    break;
-                }
-            }
-        }
-
-
-        public int[] CalculateVolumes()
-        {
 
             int moves = (int)Math.Ceiling((double)volume / capacity);
             int[] moveSet = new int[moves];
@@ -68,23 +43,7 @@ namespace Pipettor
             return moveSet;
         }
 
-
-
-        private int volume;
         private int capacity;
-        private bool result;
-
-        public int Volume
-        {
-            get { return volume; }
-            set
-            {
-                if (value > 0)
-                {
-                    volume = value;
-                }
-            }
-        }
 
         public int Capacity
         {
