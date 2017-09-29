@@ -28,8 +28,9 @@ namespace Pipettor.Test
         [Test]
         public void Dividing_lots_of_numbers()
         {
-            int[] results = Program.CalculateVolumes(_vol, _cap);
-            Assert.IsTrue((results.Max() - results.Min()) <= 1);
+            PipetteDevice biomek = Setup_Test.SetupDevice(_vol, _cap);
+            int[] result = biomek.CalculateVolumes();
+            Assert.IsTrue((result.Max() - result.Min()) <= 1);
         }
     }  
 }

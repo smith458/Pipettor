@@ -8,7 +8,8 @@ namespace Pipettor.Test
         [Test]
         public void Dividing_one_and_one()
         {
-            int[] result = Program.CalculateVolumes(1,1);
+            PipetteDevice biomek = Setup_Test.SetupDevice(1, 1);
+            int[] result = biomek.CalculateVolumes();
             int[] expected = new int[] { 1 };
             Assert.AreEqual(expected, result);
         }
@@ -16,7 +17,8 @@ namespace Pipettor.Test
         [Test]
         public void Dividing_positive_and_multiple()
         {
-            int[] result = Program.CalculateVolumes(100, 25);
+            PipetteDevice biomek = Setup_Test.SetupDevice(100, 25);
+            int[] result = biomek.CalculateVolumes();
             int[] expected = new int[] { 25, 25, 25, 25 };
             Assert.AreEqual(expected, result);
         }
@@ -24,8 +26,18 @@ namespace Pipettor.Test
         [Test]
         public void Dividing_positive_and_nonmultiple()
         {
-            int[] result = Program.CalculateVolumes(100, 40);
+            PipetteDevice biomek = Setup_Test.SetupDevice(100, 40);
+            int[] result = biomek.CalculateVolumes();
             int[] expected = new int[] { 33, 33, 34 };
+            Assert.AreEqual(expected, result);
+        }
+
+        [Test]
+        public void Dividing_small_and_larger()
+        {
+            PipetteDevice biomek = Setup_Test.SetupDevice(10, 40);
+            int[] result = biomek.CalculateVolumes();
+            int[] expected = new int[] { 10 };
             Assert.AreEqual(expected, result);
         }
     }
